@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="iHoroskop - Daily Horoscope App for 12 Zodiac Signs with love, finance, health, weton, shio, matchmaking and more.">
+<title>iHoroskop | Play Indiga</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: radial-gradient(ellipse at bottom, #0c0f1a 0%, #05070d 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 1.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* 🌙 Moon Glow */
+body::after {
+  content: "";
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* ⭐ Starfield */
+.starfield {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, white, transparent),
+    radial-gradient(2px 2px at 120px 80px, white, transparent),
+    radial-gradient(1.5px 1.5px at 200px 150px, white, transparent),
+    radial-gradient(1.5px 1.5px at 300px 220px, white, transparent);
+  background-size: 400px 400px;
+  animation: moveStars 60s linear infinite;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-400px); }
+}
+
+/* 🔮 Constellation */
+.constellation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.constellation circle,
+.constellation line {
+  filter: url(#glow);
+}
+
+.constellation circle {
+  animation: starPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes starPulse {
+  from { opacity: 0.5; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.5); }
+}
+
+/* 💎 Glass Card */
+.card {
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(25px);
+  border-radius: 24px;
+  padding: 45px 35px;
+  max-width: 650px;
+  width: 90%;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  text-align: center;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.app-icon {
+  width: 110px;
+  border-radius: 26px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+p {
+  opacity: 0.9;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.lang-toggle {
+  margin-top: 15px;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.footer {
+  margin-top: 30px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.footer a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.social {
+  margin-top: 20px;
+}
+
+.social a {
+  margin: 0 10px;
+  font-size: 20px;
+  color: white;
+  transition: 0.3s;
+}
+
+.social a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="starfield"></div>
+
+<!-- 🔮 Constellation -->
+<svg class="constellation" viewBox="0 0 800 600">
+<defs>
+  <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+    <feGaussianBlur stdDeviation="4" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>
+
+<circle cx="200" cy="150" r="2" fill="white"/>
+<circle cx="300" cy="200" r="2" fill="white"/>
+<circle cx="400" cy="130" r="2" fill="white"/>
+<circle cx="500" cy="250" r="2" fill="white"/>
+
+<line x1="200" y1="150" x2="300" y2="200" stroke="white"/>
+<line x1="300" y1="200" x2="400" y2="130" stroke="white"/>
+<line x1="400" y1="130" x2="500" y2="250" stroke="white"/>
+</svg>
+
+<div class="card">
+  <img src="images/app-icon.png" class="app-icon" alt="iHoroskop App Icon">
+  <h1>iHoroskop</h1>
+  <p id="description"></p>
+
+  <div class="lang-toggle" onclick="toggleLanguage()">
+    🌐 <span id="langSwitch"></span>
+  </div>
+
+  <div class="footer">
+    <a href="privacy.html" id="privacyText"></a>
+    <div class="social">
+      <a href="https://instagram.com/ihoroskop" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com/ihoroskop2" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com/ihoroskop" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="mailto:ihoroskop.cc@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</div>
+
+<script>
+const translations = {
+  id: {
+    description: `iHoroskop adalah aplikasi Ramalan Bintang Harian untuk 12 Zodiak.
+
+Diupdate setiap hari dengan ramalan lengkap mulai dari ramalan umum, cinta, keuangan, hingga kesehatan.
+
+Dilengkapi fitur weton, wuku, shio, perjodohan, dan cek kecocokan zodiak.`,
+    privacy: "Kebijakan Privasi",
+    switch: "Switch to English"
+  },
+  en: {
+    description: `iHoroskop is a Daily Horoscope application for the 12 Zodiac Signs.
+
+Updated every day with complete predictions including love, finance, and health.
+
+It also features weton, wuku, Chinese zodiac, matchmaking, and compatibility checker.`,
+    privacy: "Privacy Policy",
+    switch: "Ganti ke Bahasa Indonesia"
+  }
+};
+
+let currentLang = navigator.language.startsWith("id") ? "id" : "en";
+
+function applyLanguage(lang) {
+  document.getElementById("description").innerText = translations[lang].description;
+  document.getElementById("privacyText").innerText = translations[lang].privacy;
+  document.getElementById("langSwitch").innerText = translations[lang].switch;
+  currentLang = lang;
+}
+
+function toggleLanguage() {
+  applyLanguage(currentLang === "id" ? "en" : "id");
+}
+
+applyLanguage(currentLang);
+</script>
+
+</body>
+</html>
