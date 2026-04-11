@@ -1,1 +1,27 @@
 google.com, pub-3494090817532231, DIRECT, f08c47fec0942fa0
+
+appodeal.com, 262647, DIRECT
+
+#BidMachine
+bidmachine.io,1,DIRECT
+bidmachine.io,466,DIRECT
+
+applovin.com,5c72b49c2b2ce6949bf0f98eafe9e417,RESELLER
+applovin.com,a97e4a2a60836795b8e1433cefd17f30,RESELLER
+
+mintegral.com, 10046, RESELLER, 0aeed750c80d6423
+mintegral.com, 11154, RESELLER, 0aeed750c80d6423
+mintegral.com,10005,RESELLER
+mintegral.com,10005,RESELLER,0aeed750c80d6423
+mintegral.com,10026,RESELLER
+mintegral.com,10030,RESELLER
+mintegral.com,10038,RESELLER
+mintegral.com,10048,RESELLER,0aeed750c80d6423
+
+pangleglobal.com, 45779, RESELLER
+pangleglobal.com, 5026198, RESELLER
+pangleglobal.com, 82832, RESELLER
+pangleglobal.com,67894,RESELLER
+
+unity.com,1004715,RESELLER,96cabb5fbdde37a7
+vungle.com,561e8d956b8d90f61a003219,RESELLER,c107d686becd2d77
